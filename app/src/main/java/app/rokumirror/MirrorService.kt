@@ -171,8 +171,8 @@ class MirrorService : Service() {
             }
             if (!running) return
             val url = "http://${phoneIp()}:$port/live.m3u8"
-            val q = "t=v&u=${URLEncoder.encode(url, "UTF-8")}&k=(null)&videoName=Espelho&videoFormat=hls"
-            val c = URL("http://$roku:8060/input/15985?$q").openConnection() as HttpURLConnection
+            val q = "streamformat=hls&url=${URLEncoder.encode(url, "UTF-8")}"
+val c = URL("http://$roku:8060/launch/dev?$q").openConnection() as HttpURLConnection
             c.requestMethod = "POST"
             c.doOutput = true
             c.setFixedLengthStreamingMode(0)
